@@ -1,0 +1,26 @@
+<div>
+<h1>Foodie</h1>
+  <p class='customer'>
+  Deliver to: {{customerName}}, {{customerAddress}}
+  <label class="addressChange"><a href="/customer">Change</a></label>
+</p>
+<div class="hotels">
+  <h3>Filter Restaurants</h3>
+  <ul style="list-style-type: none;" *ngFor="let cuisine of allCuisines">
+    <li><input type="checkbox" [checked]="cuisine.selected" name="cuisine" (click)="selectHotels(cuisine)"/>{{cuisine.name}}</li>
+  </ul>
+</div>
+<div class="hotelList">
+  <table border="1" style="width:90%;">
+    <tr *ngFor='let hotel of selecteddata'>
+      <td style="width:100%">
+        <div>
+          <h3>{{hotel.name}}</h3>
+          <p>{{hotel.picture}}</p>
+          <p>{{hotel.rating}}</p>
+          <p><a [routerLink]="['../menu',hotel.id]">Order</a></p>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

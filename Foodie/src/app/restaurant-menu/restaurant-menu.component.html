@@ -1,0 +1,49 @@
+<div class="container fm-restaurant">
+  <div class="row">
+    <div class="col-md-2">
+ 
+    </div>
+    <div class="col-md-10">
+      <h3>{{restaurant.name}}</h3>
+      <div class="row">
+        <div class="col-md-2">
+          <div>{{restaurant.address}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-8 fm-panel fm-menu-list">
+      <h4>Menu</h4>
+      <table width="100%">
+        <tr *ngFor="let item of items">
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td><button type="button" class="glyphicon glyphicon-plus" (click)="addToCart(restaurant.id,item)">+</button></td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="col-md-4 fm-panel fm-cart">
+      <h4>Your order</h4>
+      <table width="100%">
+        <table width="100%">
+          <tr *ngFor="let item of cart">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.qty}}</td>
+            <td><button type="button" (click)="removeFromCart(restaurant.id, item)" class="glyphicon glyphicon-minus">-</button></td>
+          </tr>
+        </table>
+        <div class="pull-right" *ngIf="cart.length">
+          <a (click)="goToBilling()" class="btn">Checkout</a>
+        </div>
+
+      </table>
+    </div>
+  </div>
+</div>
